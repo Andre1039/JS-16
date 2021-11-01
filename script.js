@@ -37,6 +37,18 @@ class Slider {
 
         this.next.addEventListener('click', () => this.move(this.next));
         this.prev.addEventListener('click', () => this.move(this.prev));
+
+        this.interval = setInterval(() => this.move(this.next), 2000);
+        
+
+        this.sliderLine.addEventListener('mouseover', () => {
+            clearInterval(this.interval);
+            this.sliderLine.addEventListener('mouseleave', () => {
+                this.interval = setInterval(() => this.move(this.next), 2000);
+        })
+
+        })
+        
     }
 
     move(btn) {
